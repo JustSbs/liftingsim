@@ -763,7 +763,7 @@ task.spawn(function()
                     "BuyItem",
                     "Income_Item",
                     "1ST SUPREME CLASS",
-                    135
+                    136
                 })
             end)
         end
