@@ -24,8 +24,8 @@ local defaultSettings = {
     autoBuy = false,
     minimized = false,
 
-    positionX = 500,
-    positionY = 300,
+    positionX = 0,
+    positionY = 0,
 
     miniPositionX = 30,
     miniPositionY = 300
