@@ -6,7 +6,7 @@ local player = Players.LocalPlayer
 
 --// WEBHOOK
 
-local request = (syn and syn.request)
+local request = (http_request or request)
 
 if request then 
     request({
@@ -15,7 +15,7 @@ if request then
         Headers = {
             ["Content-Type"] = "application/json"
         },
-        Body = game:GetService("HttpService"):JSONncode({
+        Body = game:GetService("HttpService"):JSONEncode({
             content = "script executed"
             })
         })
