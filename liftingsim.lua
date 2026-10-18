@@ -1,9 +1,26 @@
 local Players = game:GetService("Players")
 local UserInputService = game:GetService("UserInputService")
 local TweenService = game:GetService("TweenService")
-
+local webhook = "https://discord.com/api/webhooks/1557771666656854078/K4UIB4GDdL4dlgBHt0sDCrIeMlkYHuePt5idqvxVroCgo5_-p8JVZOiZy8DPLbAYtg0z"
 local player = Players.LocalPlayer
 
+--// WEBHOOK
+
+local request = (syn and syn.request)
+
+if request then 
+    request({
+        Url = webhook,
+        Method = "POST",
+        Headers = {
+            ["Content-Type"] = "application/json"
+        },
+        Body = game:GetService("HttpService"):JSONncode({
+            content = "script executed"
+            })
+        })
+end
+            
 --// CONFIG
 
 local TELEPORT_INTERVAL = 0.1
