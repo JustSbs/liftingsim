@@ -3,14 +3,10 @@
 local CONFIG = {
 
     --// TELEPORT + ANTI AFK KICK
-    TELEPORT_POSITION = Vector3.new(TP_POS1),
+    TELEPORT_POSITION = Vector3.new(14992, -55, 938),
     TELEPORT_INTERVAL = 0.1,
     JUMP_INTERVAL = 5,
     MOVEMENT_INTERVAL = 2,
-
-    TP_POS1 = 14992, -55, 938,
-    TP_POS2 = 0, 0, 0,
-    TP_POS3 = 0, 0, 0,
 
     --// BUY, SELL
     SELL_INTERVAL = 1800,
