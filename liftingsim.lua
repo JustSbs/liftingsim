@@ -8,13 +8,22 @@ local CONFIG = {
     JUMP_INTERVAL = 5,
     MOVEMENT_INTERVAL = 2,
 
-    --// BUY, SELL
+    --// BUY, SELL, LIFT
+    
+        --// sell
     SELL_INTERVAL = 1800,
-
-    BUY_INTERVAL = 15,
-    BUY_CATEGORY = "Income_Item",
-    BUY_ITEM = "1ST SUPREME CLASS",
-    BUY_ID = 136,
+        --// lift
+    LIFT_INTERVAL = 0.15,
+        --// buy weight/item
+    LIFTBUY_INTERVAL = 15,
+    LIFTBUY_CATEGORY = "Income_Item",
+    LIFTBUY_ITEM = "4TH SUPREME CLASS",
+    LIFTBUY_ID = 138,
+        --// buy stage
+    STAGEBUY_INTERVAL = 15,
+    STAGEBUY_CATEGORY = "Rebirth_Item",
+    STAGEBUY_ITEM = "Rebirth30",
+    STAGEBUY_ID = 30,
 
     --// UI
     TITLE = "Gud script - By @justsbsxd",
@@ -22,7 +31,7 @@ local CONFIG = {
 
     --// SETTINGS
     SETTINGS_FILE = "LiftingSimSbs.txt",
-    WEBHOOK = "https://discord.com/api/webhooks/1557771666656854078/K4UIB4GDdL4dlgBHt0sDCrIeMlkYHuePt5idqvxVroCgo5_-p8JVZOiZy8DPLbAYtg0z",
+    WEBHOOK = "https://discord.com/api/webhooks/1557771666656854078/K4UIB4GDdL4dlgBHt0sDCrIeMlkYHuePt5idqvxVroCgo5_-p8JVZOiZy8DPLbAYtg0z"
 }
 
 local Players = game:GetService("Players")
@@ -59,7 +68,7 @@ local Rayfield = loadstring(game:HttpGet("https://sirius.menu/gen2"))()
 
 --// SETTINGS FILE (RAYFIELD CONFIGS = OFF)
 
-local settings = { teleport = false, autoSell = false, autoBuy = false }
+local settings = { teleport = false, autoSell = false, autoBuy = false, autoLift = false, autoStage = false}
 
 local function saveSettings()
     if not writefile then return end
@@ -117,6 +126,8 @@ end
 addToggle("Teleport", "teleport")
 addToggle("Auto Sell", "autoSell")
 addToggle("Auto Buy", "autoBuy")
+addToggle("Auto Lift", "autoLift")
+addToggle("Auto Stage", "autoStage")
 
 tab:CreateButton({
     name = "Close UI",
@@ -177,6 +188,14 @@ every(CONFIG.SELL_INTERVAL, "autoSell", function()
     ReplicatedStorage.RemoteEvent:FireServer({ "SellMuscle" })
 end)
 
-every(CONFIG.BUY_INTERVAL, "autoBuy", function()
-    ReplicatedStorage.RemoteEvent:FireServer({ "BuyItem", CONFIG.BUY_CATEGORY, CONFIG.BUY_ITEM, CONFIG.BUY_ID })
+every(CONFIG.STAGEBUY_INTERVAL, "autoBuy", function()
+    ReplicatedStorage.RemoteEvent:FireServer({ "BuyItem", CONFIG.LIFTBUY_CATEGORY, CONFIG.LIFTBUY_ITEM, CONFIG.LIFTBUY_ID })
+end)
+
+every(CONFIG.LIFT_INTERVAL, "autoLift", function()
+    ReplicatedStorage.RemoteEvent:FireServer({ "GainMuscle" })
+end)
+
+every(CONFIG.STAGEBUY_INTERVAL, "autoStage", function()
+    ReplicatedStorage.RemoteEvent:FireServer({ "BuyItem", CONFIG.STAGEBUY_CATEGORY, STAGEBUY_ITEM, STAGEBUY_ID })
 end)
