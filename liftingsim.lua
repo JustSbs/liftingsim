@@ -3,7 +3,6 @@
 local CONFIG = {
 
     --// TELEPORT + ANTI AFK KICK
-
     TELEPORT_POSITION = Vector3.new(TP_POS1),
     TELEPORT_INTERVAL = 0.1,
     JUMP_INTERVAL = 5,
